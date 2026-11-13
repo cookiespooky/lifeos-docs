@@ -3,12 +3,10 @@ type: article
 slug: zadachi
 title: Задачи
 description: "Одна строка — одна задача в tasks/backlog.md: срок, день, приоритет, человек. Что на сегодня и что просрочено."
-hub: ["lyudi"]
+section: "2 · Люди и задачи"
 order: 20
-related: ["zametka-o-cheloveke", "stranitsa-dnya"]
+updated: 2026-11-13
 ---
-
-# Задачи
 
 ## Что делает
 

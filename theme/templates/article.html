@@ -1,0 +1,16 @@
+<article class="page">
+  <header class="page__head">
+    {{- if .FM.section }}<p class="eyebrow">{{ .FM.section }}</p>{{ end }}
+    <h1>{{ .Page.Title }}</h1>
+    {{- if .FM.lead }}
+    <p class="lead">{{ .FM.lead }}</p>
+    {{- end }}
+  </header>
+  <div class="prose">
+    {{ .Body }}
+  </div>
+  <footer class="byline">
+    <p>Life OS · {{ .Settings.author_name }}{{ if .FM.updated }} · сверено с кодом {{ .FM.updated }}{{ end }}</p>
+    <p><a href="{{ .Settings.repo_url }}" target="_blank" rel="noopener">Предложить правку →</a></p>
+  </footer>
+</article>

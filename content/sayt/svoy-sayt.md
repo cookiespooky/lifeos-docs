@@ -3,12 +3,10 @@ type: article
 slug: svoy-sayt
 title: Свой сайт рядом с хранилищем
 description: "Блог, база знаний или сайт услуг на готовом шаблоне Notepub — или свой по вашим предпочтениям. Пишется в Obsidian, публикуется на GitHub Pages."
-hub: ["sayt"]
+section: "5 · Сайт"
 order: 10
-related: ["chto-takoe-life-os"]
+updated: 2026-11-13
 ---
-
-# Свой сайт рядом с хранилищем
 
 ## Что делает
 

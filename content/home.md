@@ -3,11 +3,7 @@ type: home
 slug: home
 title: Life OS — база знаний
 description: "Как пользоваться Life OS: установка, входящие из Telegram и почты, документы по шаблонам, сайт. Для вас и для вашего агента."
-image: /media/lifeos.png
-related: ["chto-takoe-life-os", "ustanovka", "telegram", "pochta", "dokumenty-po-shablonu"]
 ---
-
-# Life OS — база знаний
 
 Life OS — рабочее хранилище заметок и код, с которым ваш агент (Claude Code или Codex) разбирает входящие, ведёт
 людей и задачи и собирает документы. Здесь — как каждая часть работает и как ею пользоваться.

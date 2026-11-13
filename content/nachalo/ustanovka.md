@@ -3,12 +3,10 @@ type: article
 slug: ustanovka
 title: Установка
 description: "Поставить код Life OS на свой компьютер и связать его с хранилищем: одна команда и проверка."
-hub: ["nachalo"]
+section: "1 · Начало"
 order: 20
-related: ["chto-takoe-life-os", "telegram", "pochta"]
+updated: 2026-11-13
 ---
-
-# Установка
 
 ## Что делает
 

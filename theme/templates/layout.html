@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#f5f6f7" />
+  <link rel="preload" as="font" type="font/woff2" href="{{ .AssetsBase }}/fonts/golos-text-cyrillic.woff2" crossorigin />
+  <link rel="stylesheet" href="{{ .AssetsBase }}/fonts.css" />
+  <link rel="stylesheet" href="{{ .AssetsBase }}/tokens.css" />
+  <link rel="stylesheet" href="{{ .AssetsBase }}/wiki.css" />
+  <link rel="icon" href="{{ .AssetsBase }}/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="{{ .AssetsBase }}/apple-touch-icon.png" />
+  {{- if .Page.Description }}
+  <meta name="description" content="{{ .Page.Description }}" />
+  {{- end }}
+  {{- if .Meta.Robots }}
+  <meta name="robots" content="{{ .Meta.Robots }}" />
+  {{- end }}
+  {{- if .Canonical }}
+  <link rel="canonical" href="{{ .Canonical }}" />
+  {{- end }}
+  {{- range .Meta.OpenGraph }}
+  <meta property="{{ .Key }}" content="{{ .Value }}" />
+  {{- end }}
+  <title>{{ .Title }}</title>
+  {{- if .Settings.yandex_verification }}
+  <meta name="yandex-verification" content="{{ .Settings.yandex_verification }}" />
+  {{- end }}
+  {{- if .Settings.google_verification }}
+  <meta name="google-site-verification" content="{{ .Settings.google_verification }}" />
+  {{- end }}
+  {{- if .IsHome }}
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": {{ .Settings.site_name }}, "description": {{ .Page.Description }}, "url": {{ .Canonical }}, "inLanguage": "ru", "author": {"@type": "Person", "name": {{ .Settings.author_name }}, "url": {{ .Settings.author_url }}}}</script>
+  {{- else if eq .Page.Type "article" }}
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": {{ .Page.Title }}, "description": {{ .Page.Description }}, "url": {{ .Canonical }}, "inLanguage": "ru", "author": {"@type": "Person", "name": {{ .Settings.author_name }}, "url": {{ .Settings.author_url }}}, "isPartOf": {"@type": "WebSite", "name": {{ .Settings.site_name }}, "url": {{ printf "%s/" .BaseURL }}}}</script>
+  {{- end }}
+</head>
+<body>
+  {{- /* Шапка: название и строка о базе, справа — Life OS, платная часть, автор. На узком экране ссылки уходят в
+         ящик, на их месте кнопка содержания. */}}
+  <header class="top">
+    <div class="top__inner">
+      <a class="top__brand" href="{{ .BaseURL }}/">
+        <span class="top__name">{{ .Settings.site_name }}</span>
+        <span class="top__note">{{ .Settings.site_note }}</span>
+      </a>
+      <nav class="top__links" aria-label="Life OS">
+        <a href="{{ .Settings.product_url }}" target="_blank" rel="noopener">Life OS</a>
+        <a href="{{ .Settings.memory_url }}" target="_blank" rel="noopener">Память и навигация</a>
+        <a href="{{ .Settings.author_url }}" target="_blank" rel="author noopener">Об авторе</a>
+      </nav>
+      <button class="top__burger" type="button" data-drawer-open aria-controls="drawer" aria-expanded="false" aria-label="Открыть содержание"><span aria-hidden="true"></span></button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside class="side">
+      {{ template "sidebar.html" . }}
+    </aside>
+    <script>try{var s=JSON.parse(sessionStorage.getItem('wiki-menu-scroll')||'{}');if(s[0])document.currentScript.previousElementSibling.scrollTop=s[0]}catch(e){}</script>
+    <main class="main">
+      {{ .Body }}
+    </main>
+  </div>
+
+  <div class="overlay" data-drawer-overlay hidden></div>
+  <aside class="drawer" id="drawer" data-drawer aria-label="Содержание" aria-hidden="true" hidden>
+    <div class="drawer__head">
+      <span>Содержание</span>
+      <button class="drawer__close" type="button" data-drawer-close aria-label="Закрыть">✕</button>
+    </div>
+    {{ template "sidebar.html" . }}
+    <p class="drawer__links">
+      <a href="{{ .Settings.product_url }}" target="_blank" rel="noopener">Life OS</a>
+      <a href="{{ .Settings.memory_url }}" target="_blank" rel="noopener">Память и навигация</a>
+      <a href="{{ .Settings.author_url }}" target="_blank" rel="author noopener">Об авторе</a>
+    </p>
+  </aside>
+  <script src="{{ .AssetsBase }}/wiki.js" defer></script>
+  {{- /* Счётчики — из settings в config.yaml, пустой номер ничего не выводит. */}}
+  {{- if or .Settings.metrika_id .Settings.ga_id }}
+  <script>
+    (function () {
+      var urls = [];
+      {{- if .Settings.metrika_id }}
+      window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
+      window.ym.l = 1 * new Date();
+      ym(Number({{ .Settings.metrika_id }}), "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: false });
+      urls.push("https://mc.yandex.ru/metrika/tag.js?id=" + {{ .Settings.metrika_id }});
+      {{- end }}
+      {{- if .Settings.ga_id }}
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      gtag("js", new Date());
+      gtag("config", {{ .Settings.ga_id }});
+      urls.push("https://www.googletagmanager.com/gtag/js?id=" + {{ .Settings.ga_id }});
+      {{- end }}
+      function load() {
+        urls.forEach(function (src) {
+          for (var j = 0; j < document.scripts.length; j++) if (document.scripts[j].src === src) return;
+          var s = document.createElement("script"); s.async = true; s.src = src; document.head.appendChild(s);
+        });
+      }
+      function schedule() {
+        if (window.requestIdleCallback) requestIdleCallback(load, { timeout: 3000 });
+        else setTimeout(load, 1200);
+      }
+      if (document.readyState === "complete") schedule(); else window.addEventListener("load", schedule);
+    })();
+  </script>
+  {{- end }}
+  {{- if .Settings.metrika_id }}
+  <noscript><div><img src="https://mc.yandex.ru/watch/{{ .Settings.metrika_id }}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  {{- end }}
+</body>
+</html>

@@ -1,0 +1,19 @@
+{{- /* Боковое меню: разделы — группы по полю section мануала (порядок — по числу в начале названия), внутри — по
+       order. Открыт раздел открытой страницы; клик по названию сворачивает его без перехода. Печатается дважды —
+       слева на широком экране и в выдвижном ящике на узком. */ -}}
+<nav class="side__nav" aria-label="Содержание базы знаний">
+  <div class="side__step side__about">
+    <p class="side__title"><span class="side__num">·</span><a href="{{ $.BaseURL }}/"{{ if $.IsHome }} aria-current="page"{{ end }}>О базе знаний</a></p>
+  </div>
+  {{- range .Collections.sections.Groups }}
+  {{- $open := false }}{{ range .Items }}{{ if eq .Slug $.Page.Slug }}{{ $open = true }}{{ end }}{{ end }}
+  <details class="side__step"{{ if $open }} open{{ end }}>
+    <summary class="side__title">{{ .Key }}</summary>
+    <ul>
+      {{- range .Items }}
+      <li><a href="{{ $.BaseURL }}/{{ .Slug }}/"{{ if eq .Slug $.Page.Slug }} aria-current="page"{{ end }}>{{ .Title }}</a></li>
+      {{- end }}
+    </ul>
+  </details>
+  {{- end }}
+</nav>

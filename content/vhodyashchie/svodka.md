@@ -3,12 +3,10 @@ type: article
 slug: svodka
 title: Сводка входящих
 description: "Одна сводка по Telegram и почте: что пришло, кто ждёт ответа, что агент записал. С агентом и без него."
-hub: ["vhodyashchie"]
+section: "3 · Входящие"
 order: 30
-related: ["telegram", "pochta"]
+updated: 2026-11-13
 ---
-
-# Сводка входящих
 
 ## Что делает
 

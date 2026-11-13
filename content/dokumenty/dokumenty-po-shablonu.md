@@ -3,12 +3,10 @@ type: article
 slug: dokumenty-po-shablonu
 title: Документ по шаблону
 description: "Договор, счёт, акт или любой документ в PDF: заметка-документ, стороны с реквизитами, проверка пустых полей."
-hub: ["dokumenty"]
+section: "4 · Документы"
 order: 10
-related: ["shablon-iz-dokumenta"]
+updated: 2026-11-13
 ---
-
-# Документ по шаблону
 
 ## Что делает
 

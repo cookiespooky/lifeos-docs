@@ -3,12 +3,10 @@ type: article
 slug: razbor-vhodyashchikh
 title: Разбор входящих
 description: "Всё новое — во inbox/; агент сопоставляет каждую заметку с тем, что уже есть, записывает следствия и раскладывает."
-hub: ["lyudi"]
+section: "2 · Люди и задачи"
 order: 40
-related: ["zametka-o-cheloveke", "zadachi", "svodka"]
+updated: 2026-11-13
 ---
-
-# Разбор входящих
 
 ## Что делает
 

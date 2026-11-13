@@ -1,0 +1,66 @@
+# База знаний Life OS. Выкладывается на GitHub Pages из cookiespooky/lifeos-docs; сервер antonlozhkin.ru отдаёт её
+# по адресу /lifeos-docs/ (страницы проектов Pages). Оформление — как у гайда «Вайбкодинг с нуля».
+site:
+  id: lifeos-docs
+  base_url: "https://antonlozhkin.ru/lifeos-docs"
+  title: "Life OS — база знаний"
+  description: "Как пользоваться Life OS — вам и вашему агенту: установка, люди и задачи, входящие, документы, сайт."
+  default_og_image: "/media/lifeos.png"
+  media_base_url: "https://antonlozhkin.ru/lifeos-docs/media"
+  host: 127.0.0.1
+
+runtime:
+  mode: "prod"
+  dev:
+    base_url: "http://127.0.0.1:8089"
+    media_base_url: "http://127.0.0.1:8089/media"
+
+content:
+  source: "local"
+  local_dir: "./content"
+
+markdown:
+  html_policy: "safe"
+
+og_type_by_type:
+  home: "website"
+  page: "website"
+  article: "article"
+
+paths:
+  file_root: ./.notepub
+  artifacts_dir: ./.notepub/artifacts
+  snapshot_file: ./.notepub/snapshot/objects.json
+  cache_root: ./.notepub/cache
+
+theme:
+  dir: .
+  name: "theme"
+  templates_subdir: templates
+  assets_subdir: assets
+
+server:
+  listen: "127.0.0.1:8089"
+
+rules_path: ./rules.yaml
+
+# Слова шаблона. Пустая строка ничего не выводит.
+settings:
+  site_name: "Life OS"
+  site_note: "База знаний — для вас и вашего агента"
+  author_name: "Антон Ложкин"
+  author_url: "https://antonlozhkin.ru/"
+  product_url: "https://lifeos.antonlozhkin.ru/"
+  memory_url: "https://antonlozhkin.ru/obsidian-guide/lifeos-templates/"
+  repo_url: "https://github.com/cookiespooky/lifeos-docs"
+  metrika_id: ""
+  ga_id: ""
+  yandex_verification: ""
+  google_verification: ""
+
+robots:
+  disallow: []
+
+cache:
+  html_ttl_seconds: 600
+  stale_if_error_seconds: 604800

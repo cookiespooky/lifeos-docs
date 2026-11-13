@@ -3,12 +3,10 @@ type: article
 slug: chto-takoe-life-os
 title: Что такое Life OS
 description: "Три части Life OS — хранилище, код и память с навигацией: что делает каждая и что из них бесплатно."
-hub: ["nachalo"]
+section: "1 · Начало"
 order: 10
-related: ["ustanovka", "telegram", "dokumenty-po-shablonu"]
+updated: 2026-11-13
 ---
-
-# Что такое Life OS
 
 Life OS — способ работать с ИИ-агентом над своим делом так, чтобы он помнил контекст и не тратил силы на рутину.
 Всё лежит у вас: обычные файлы Markdown в папке, удобнее всего — в хранилище Obsidian.

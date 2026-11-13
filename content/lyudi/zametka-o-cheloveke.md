@@ -3,12 +3,10 @@ type: article
 slug: zametka-o-cheloveke
 title: Заметка о человеке
 description: "Одна заметка на человека: кто он, история строками с датой, его задачи. Личные данные — отдельно."
-hub: ["lyudi"]
+section: "2 · Люди и задачи"
 order: 10
-related: ["zadachi", "razbor-vhodyashchikh", "telegram"]
+updated: 2026-11-13
 ---
-
-# Заметка о человеке
 
 ## Что делает
 

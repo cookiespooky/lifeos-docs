@@ -3,12 +3,10 @@ type: article
 slug: shablon-iz-dokumenta
 title: Шаблон из своего документа
 description: "Агент делает шаблон из вашего готового договора, счёта или акта — слово в слово, с полями на месте меняющегося."
-hub: ["dokumenty"]
+section: "4 · Документы"
 order: 20
-related: ["dokumenty-po-shablonu"]
+updated: 2026-11-13
 ---
-
-# Шаблон из своего документа
 
 ## Что делает
 

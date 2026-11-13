@@ -3,12 +3,10 @@ type: article
 slug: telegram
 title: Telegram
 description: "Новые сообщения из Telegram в сводке: подключить свой аккаунт только на чтение, рабочие группы целиком, файлы по просьбе."
-hub: ["vhodyashchie"]
+section: "3 · Входящие"
 order: 10
-related: ["pochta", "svodka", "ustanovka"]
+updated: 2026-11-13
 ---
-
-# Telegram
 
 ## Что делает
 

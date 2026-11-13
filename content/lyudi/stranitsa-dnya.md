@@ -3,12 +3,10 @@ type: article
 slug: stranitsa-dnya
 title: Страница дня
 description: "Заметка дня в journal/: задачи на сегодня и просроченные, ссылки на то, что было за день."
-hub: ["lyudi"]
+section: "2 · Люди и задачи"
 order: 30
-related: ["zadachi", "razbor-vhodyashchikh"]
+updated: 2026-11-13
 ---
-
-# Страница дня
 
 ## Что делает
 

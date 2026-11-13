@@ -3,12 +3,10 @@ type: article
 slug: pochta
 title: Почта
 description: "Новые письма в сводке: любой ящик с IMAP, пароль приложения, вложения по просьбе, письма остаются непрочитанными."
-hub: ["vhodyashchie"]
+section: "3 · Входящие"
 order: 20
-related: ["telegram", "svodka", "ustanovka"]
+updated: 2026-11-13
 ---
-
-# Почта
 
 ## Что делает
 

@@ -3,29 +3,30 @@
 Мануалы по Life OS для человека и его агента (Claude Code, Codex): установка, входящие из Telegram и почты, документы
 по шаблонам, сайт. Сайт: https://antonlozhkin.ru/lifeos-docs/
 
-Собрано на шаблоне [np-template-docs](https://github.com/cookiespooky/np-template-docs) движка
-[Notepub](https://antonlozhkin.ru/np/ru/). Репозиторий сам — шаблон: **Use this template**, и у вас та же база знаний
+Оформление — как у гайда [«Вайбкодинг с нуля»](https://vibewiki.github.io/): дерево разделов слева, движок
+[Notepub](https://antonlozhkin.ru/np/ru/). Репозиторий — шаблон: **Use this template**, и у вас такая же база знаний
 для своего продукта или дела.
 
 ## Как устроено
 
 | что | где |
 |---|---|
-| разделы | `content/<раздел>/<раздел>.md` (`type: hub`; имя файла — адрес раздела, не `index.md`: два `index.md` конфликтуют) |
-| мануалы | `content/<раздел>/<адрес>.md` (`type: article`, `hub: ["<раздел>"]`, `order`) |
-| главная, поиск, подвал | `content/home.md`, `content/search.md`, `content/footer.md` |
-| название, логотип, цвет | `Site.md`; подписи интерфейса — `Interface.md` |
-| техника: тема, правила, сборка | `.np/` — менять не нужно |
+| главная | `content/home.md` (`type: home`) |
+| мануалы | `content/<папка раздела>/<адрес>.md` (`type: article`); раздел — поле `section: "3 · Входящие"`: число — порядок разделов в меню, `order` — место мануала в разделе. Новый раздел появляется в меню сам |
+| ссылки между мануалами | `[[адрес|текст]]` — сайт живёт по адресу с путём, ссылка от корня не откроется |
+| адрес, название, ссылки в шапке | `config.yaml` (`settings`); для просмотра у себя — `config.dev.yaml` |
+| оформление | `theme/` — как у вайбвики, менять не нужно |
 
 Мануал пишется по одной схеме: **что делает · что нужно · как включить · как пользоваться** (фразы агенту и
 команды) **· если не работает · где данные**. Пишется только по тому, что работает, и проверяется проходом на чистой
-установке.
+установке; `updated` — когда сверен с кодом.
 
 ## Сборка
 
 ```bash
-NOTEPUB_BIN=/path/to/notepub ./.np/scripts/preview.sh   # собрать и открыть http://127.0.0.1:8080/
-NOTEPUB_BIN=/path/to/notepub ./.np/scripts/build.sh     # только собрать в .np/dist/
+scripts/preview.sh      # собрать и открыть http://127.0.0.1:8089/
+scripts/build.sh        # проверить мануалы (scripts/check.py) и собрать в dist/
 ```
 
-Пуш в `main` публикует сайт на GitHub Pages (`.github/workflows/`).
+Движок — `notepub` из PATH или `go install` закреплённой версии (`scripts/build.sh` и `.github/workflows/pages.yml`
+— менять вместе). Пуш в `main` публикует на GitHub Pages.

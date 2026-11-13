@@ -1,0 +1,75 @@
+version: 1
+
+# Два вида страниц: главная (content/home.md) и мануал (content/<папка раздела>/<адрес>.md). Раздел мануала — поле
+# section вида «1 · Начало»: число задаёт порядок разделов в боковом меню, order — место мануала в разделе.
+fields:
+  required: ["type", "slug", "title"]
+  optional:
+    - description   # одна фраза для поиска и соцсетей
+    - lead          # вводный абзац под заголовком
+    - draft
+    - noindex
+    - section       # раздел: «1 · Начало»
+    - order         # место в разделе
+    - updated       # когда мануал сверен с кодом, ГГГГ-ММ-ДД
+  defaults:
+    draft: false
+
+fm_schema:
+  order: number
+  draft: boolean
+  noindex: boolean
+
+types:
+  home:
+    template: "page.html"
+    permalink: "/"
+    include_in: { sitemap: true, search: false }
+  article:
+    template: "article.html"
+    permalink: "/{{ slug }}/"
+    include_in: { sitemap: true, search: true }
+
+# Ссылки между мануалами — вики-ссылкой [[адрес|текст]]: сайт живёт по адресу с путём (/lifeos-docs), ссылка от
+# корня «/адрес/» там не откроется.
+links:
+  - name: "wiki"
+    kind: "wikilinks"
+    from_types: ["home", "article"]
+    resolve_by: "wikimap"
+
+collections:
+  sections:
+    kind: "filter"
+    materialize: true
+    where:
+      all:
+        - fm_eq: { key: "draft", value: false }
+        - type_in: ["article"]
+    limit: 2000
+    group_by:
+      by: "fm.section"
+      group_sort: { dir: "asc" }
+      item_sort: { by: "fm.order", dir: "asc" }
+      item_limit: 500
+
+sitemap:
+  include_types: ["home", "article"]
+  exclude_drafts: true
+
+search:
+  include_types: ["article"]
+  exclude_drafts: true
+  fields_boost: { title: 3, description: 2, body: 1 }
+  preview: { from: "description", max_len: 180 }
+
+validation:
+  single_page_of_type:
+    home: 1
+  duplicate_route: { action: "error" }
+  unknown_type: { action: "error" }
+  unique_slug: { action: "error" }
+  permalink_requires_slug: { action: "error" }
+  missing_template: { action: "error" }
+  materialize_requires_limit: true
+  materialize_group_by_requires_item_limit: true
