@@ -18,7 +18,7 @@ updated: 2026-11-13
 | что | пример |
 |---|---|
 | личный блог: записи с датой и тегами, лента, RSS | [пример](https://antonlozhkin.ru/np-template-blog/) · [шаблон](https://github.com/cookiespooky/np-template-blog) |
-| документация или база знаний — как эта | [пример](https://antonlozhkin.ru/np-template-docs/) · [шаблон](https://github.com/cookiespooky/np-template-docs) |
+| документация или база знаний: разделы, поиск, навигация | [пример](https://antonlozhkin.ru/np-template-docs/) · [шаблон](https://github.com/cookiespooky/np-template-docs) |
 | сайт услуг: услуги, цены, работы, отзывы, контакты | [пример](https://antonlozhkin.ru/np-template-services/) · [шаблон](https://github.com/cookiespooky/np-template-services) |
 
 Ни один не подходит — агент расспросит, что должно быть на сайте, и предложит свой на основе ближайшего.
